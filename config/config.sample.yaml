@@ -1,0 +1,32 @@
+##############################################################
+# Global server configuration
+##############################################################
+
+grpc-api-port: "51001"
+http-api-port: "3000"
+http-metric-port: "2112"
+#http-api-base-path: "/todo-app"
+#jwt-secret: MySecret
+
+##############################################################
+# Datastore server logs configuration
+##############################################################
+
+logger:
+  file_enable: false
+  file_path: "logs/todoapp.log"
+  json: true
+  level: info
+
+##############################################################
+# Database connection
+##############################################################
+
+dbconn:
+  host: 127.0.0.1
+  port: "1433"
+  user: sa
+  pass: sa
+  database: todoapp
+  schema: dbo
+  sslmode: false
