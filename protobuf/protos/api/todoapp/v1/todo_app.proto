@@ -1,0 +1,96 @@
+syntax = "proto3";
+
+package api.todoapp.v1;
+
+import "api/todoapp/v1/data/todo_app_models.proto";
+import "google/api/annotations.proto";
+
+option go_package = "api/todoapp/v1;todopb";
+
+// TodoAppService is the gRPC API to obtain information about the DB.
+service TodoAppService {
+
+    // TodoApp
+    // ------------------------------------------------------------------
+
+    // Returns todo with the provided ids.
+    rpc ListTodos(ListTodosRequest) returns(ListTodosResponse){
+        option (google.api.http) = {
+            get : "/api/v1/todos"
+        };
+    };
+    // Create a todo
+    rpc CreateTodo(CreateTodoRequest) returns(data.Todo){
+        option (google.api.http) = {
+            post : "/api/v1/todos"
+            body: "todo"
+        };
+    };
+    // Returns a todo by ID
+    rpc GetTodo(GetTodoRequest) returns(data.Todo){
+        option (google.api.http) = {
+            get : "/api/v1/todos/{id}"
+        };
+    };
+    // Update an existing todo
+    rpc UpdateTodo(UpdateTodoRequest) returns(data.Todo){
+        option (google.api.http) = {
+            put : "/api/v1/todos/{id}"
+            body: "Todo"
+        };
+    };
+    // Delete an existing todo
+    rpc DeleteTodo(DeleteTodoRequest) returns(Empty){
+        option (google.api.http) = {
+            delete: "/api/v1/todos/{id}"
+        };
+    };
+}
+
+message Empty {}
+
+// A todos listing request.
+message ListTodosRequest {
+    // List of todos IDs to search to be returned.
+    repeated string ids = 1;
+    // Page size is the number of data to be returned.
+    // The min and max size is determined by the server. 
+    int32 page_size = 2;
+    // Page token is used obtain the following results.   
+    string page_token = 3;
+}
+
+// Response message for a todos listing request.
+message ListTodosResponse {
+    // Todos found.
+    repeated data.Todo racers = 1;
+    // Next page token is provided on the following pages until 
+    // all the results are retrieved. 
+    string next_page_token = 2;
+}
+
+// Request for a specific todo by Id
+message GetTodoRequest {
+    // Id to find
+    string id = 1;
+}
+
+// A request to create a new todo.
+message CreateTodoRequest {
+    // Required. The new todo to create.
+    data.Todo todo = 1;
+}
+
+// Update the todo.
+message UpdateTodoRequest {
+    // Required. The identifier of the todo.
+    string id = 1;
+    // The todo params to update.
+    data.Todo todo = 2;
+}
+
+// Delete todo entry by Id
+message DeleteTodoRequest {
+    // Id to delete
+    string id = 1;
+}

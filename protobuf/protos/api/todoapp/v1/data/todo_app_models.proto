@@ -1,0 +1,18 @@
+// Definition of models used by database service
+syntax = "proto3";
+
+package api.todoapp.v1.data;
+
+import "google/protobuf/wrappers.proto";
+
+option go_package = "api/todoapp/v1/data;todopb";
+
+// Todo
+message Todo {
+    // Identifier
+    string id = 1;
+    // Description
+    string description = 2;
+    // Completed
+    bool completed = 3
+}
