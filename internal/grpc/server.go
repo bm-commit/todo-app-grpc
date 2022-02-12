@@ -11,7 +11,7 @@ import (
 	gmiddleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	grpcrecovery "github.com/grpc-ecosystem/go-grpc-middleware/recovery"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
-	v1 "github.com/todo-app/internal/grpc/handler/todoapp/v1"
+	v1 "github.com/todo-app/internal/grpc/handlers/todoapp/v1"
 	"github.com/todo-app/internal/grpc/middleware/logging"
 	"github.com/todo-app/internal/grpc/middleware/metric"
 	"github.com/todo-app/internal/logger"
