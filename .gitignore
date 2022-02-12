@@ -108,3 +108,12 @@ chrome-user-data
 .vscode
 *.swp
 *.swo
+
+# production
+/logs
+/build
+/dist
+/db
+/config/*.yaml
+!/config/*.sample.yaml
+.netrc

@@ -5,8 +5,7 @@
 grpc-api-port: "51001"
 http-api-port: "3000"
 http-metric-port: "2112"
-#http-api-base-path: "/todo-app"
-#jwt-secret: MySecret
+jwt-secret: MySecret
 
 ##############################################################
 # Datastore server logs configuration
