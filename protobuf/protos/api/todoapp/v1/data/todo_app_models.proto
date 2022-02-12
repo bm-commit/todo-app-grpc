@@ -14,5 +14,5 @@ message Todo {
     // Description
     string description = 2;
     // Completed
-    bool completed = 3
+    bool completed = 3;
 }

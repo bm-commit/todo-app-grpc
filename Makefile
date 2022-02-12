@@ -22,6 +22,12 @@ build-cli: clean dist-cli-darwin dist-cli-linux dist-cli-windows
 clean: 
 	@rm -rf ./${BUILD_DIR} ./${DIST_DIR}
 
+protos:
+	@echo $(shell pwd)
+	docker build -f Docker.buf -t buf .
+	docker run --rm -v $(shell pwd):/workspace buf generate --template buf.gen.go.yaml \
+	 --path protobuf/protos/api \
+
 ONESHELL:
 .SILENT:
 dist-cli-prepare:

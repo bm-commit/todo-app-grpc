@@ -36,7 +36,7 @@ service TodoAppService {
     rpc UpdateTodo(UpdateTodoRequest) returns(data.Todo){
         option (google.api.http) = {
             put : "/api/v1/todos/{id}"
-            body: "Todo"
+            body: "todo"
         };
     };
     // Delete an existing todo
