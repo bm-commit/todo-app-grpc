@@ -63,7 +63,7 @@ message ListTodosRequest {
 // Response message for a todos listing request.
 message ListTodosResponse {
     // Todos found.
-    repeated data.Todo racers = 1;
+    repeated data.Todo todos = 1;
     // Next page token is provided on the following pages until 
     // all the results are retrieved. 
     string next_page_token = 2;
