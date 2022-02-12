@@ -3,9 +3,10 @@ package v1
 import (
 	"context"
 
-	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	pb "github.com/todo-app/internal/protos/api/todoapp/v1"
 	modelpb "github.com/todo-app/internal/protos/api/todoapp/v1/data"
+
+	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"
 )
 

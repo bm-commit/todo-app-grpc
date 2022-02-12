@@ -21,22 +21,22 @@ func NewTodoHandler() *TodoHandler {
 
 // GetTodo returns the requested todo.
 func (t *TodoHandler) GetTodo(_ context.Context, req *pb.GetTodoRequest) (*modelpb.Todo, error) {
-	return nil, nil
+	return &modelpb.Todo{}, nil
 }
 
 // ListTodos return a list of todos with pagination
 func (t *TodoHandler) ListTodos(_ context.Context, req *pb.ListTodosRequest) (*pb.ListTodosResponse, error) {
-	return nil, nil
+	return &pb.ListTodosResponse{}, nil
 }
 
 // CreateTodo creates a todo
 func (t *TodoHandler) CreateTodo(_ context.Context, req *pb.CreateTodoRequest) (*modelpb.Todo, error) {
-	return nil, nil
+	return &modelpb.Todo{}, nil
 }
 
 // UpdateTodo updates a todo
 func (t *TodoHandler) UpdateTodo(_ context.Context, req *pb.UpdateTodoRequest) (*modelpb.Todo, error) {
-	return nil, nil
+	return &modelpb.Todo{}, nil
 }
 
 // DeleteTodo deletes a todo
