@@ -5,17 +5,18 @@ import (
 
 	pb "github.com/todo-app/internal/protos/api/todoapp/v1"
 	modelpb "github.com/todo-app/internal/protos/api/todoapp/v1/data"
+	storage "github.com/todo-app/internal/storage/sql"
 )
 
 // TodoHandler handles all todo request.
 type TodoHandler struct {
-	//ts *timingstore.TimingStore
+	s *storage.SQLStorage
 }
 
 // NewTodoHandler returns a circuit handler.
-func NewTodoHandler() *TodoHandler {
+func NewTodoHandler(store *storage.SQLStorage) *TodoHandler {
 	return &TodoHandler{
-		//ts: ts,
+		s: store,
 	}
 }
 

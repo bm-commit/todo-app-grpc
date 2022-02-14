@@ -16,6 +16,7 @@ import (
 	"github.com/todo-app/internal/grpc/middleware/metric"
 	"github.com/todo-app/internal/logger"
 	"github.com/todo-app/internal/settings"
+	storage "github.com/todo-app/internal/storage/sql"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
@@ -46,14 +47,14 @@ type Server struct {
 }
 
 // NewServer create a gRPC server instance.
-func NewServer(cfg settings.Config) (*Server, error) {
+func NewServer(cfg settings.Config, store *storage.SQLStorage) (*Server, error) {
 	rootCtx, shutdownFn := context.WithCancel(context.Background())
 
 	s := &Server{
 		cfg:        cfg,
 		ctx:        rootCtx,
 		shutdownFn: shutdownFn,
-		handler:    v1.NewTodoAppService(),
+		handler:    v1.NewTodoAppService(store),
 	}
 
 	s.grpc = s.newGrpcServer()

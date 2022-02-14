@@ -9,6 +9,7 @@ import (
 	"github.com/todo-app/internal/grpc"
 	"github.com/todo-app/internal/logger"
 	"github.com/todo-app/internal/settings"
+	storage "github.com/todo-app/internal/storage/sql"
 )
 
 var (
@@ -22,9 +23,13 @@ func main() {
 	cfg := settings.LoadConfiguration(*configFile)
 
 	// Init storage
+	sqlStore, err := storage.NewSQLStorage(cfg.DBconn)
+	if err != nil {
+		logger.Fatal("failed to load db: %v", err)
+	}
 
 	// Init GRPC Server
-	srv, err := grpc.NewServer(*cfg)
+	srv, err := grpc.NewServer(*cfg, sqlStore)
 	if err != nil {
 		logger.Fatal("cannot start the server:%v", err)
 	}

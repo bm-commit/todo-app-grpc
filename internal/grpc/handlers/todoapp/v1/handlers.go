@@ -5,6 +5,7 @@ import (
 
 	pb "github.com/todo-app/internal/protos/api/todoapp/v1"
 	modelpb "github.com/todo-app/internal/protos/api/todoapp/v1/data"
+	storage "github.com/todo-app/internal/storage/sql"
 
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"
@@ -17,9 +18,9 @@ type TodoAppServiceHandler struct {
 }
 
 // NewTodoAppService creates TodoAppServiceCtrl instance.
-func NewTodoAppService() *TodoAppServiceHandler {
+func NewTodoAppService(store *storage.SQLStorage) *TodoAppServiceHandler {
 	return &TodoAppServiceHandler{
-		todoHandler: NewTodoHandler(),
+		todoHandler: NewTodoHandler(store),
 	}
 }
 
